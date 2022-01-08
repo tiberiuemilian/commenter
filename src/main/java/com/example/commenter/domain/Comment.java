@@ -30,6 +30,11 @@ public class Comment implements Serializable {
     @Column(name = "content")
     private String content;
 
+    @JsonIgnoreProperties(value = { "parent", "author", "tags" }, allowSetters = true)
+    @OneToOne
+    @JoinColumn //(unique = true)
+    private Comment parent;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Author author;
@@ -75,6 +80,19 @@ public class Comment implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Comment getParent() {
+        return this.parent;
+    }
+
+    public Comment parent(Comment comment) {
+        this.setParent(comment);
+        return this;
+    }
+
+    public void setParent(Comment comment) {
+        this.parent = comment;
     }
 
     public Author getAuthor() {
