@@ -22,7 +22,8 @@
     <changeSet id="20220108120540-1-data" author="tiberiuemilian@gmail.com" context="faker">
         <loadData
                 file="config/liquibase/fake-data/authors.csv"
-                tableName="author">
+                tableName="author"
+                quotchar="'">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
         </loadData>
@@ -30,7 +31,8 @@
     <changeSet id="20220108121130-2-data" author="tiberiuemilian@gmail.com" context="faker">
         <loadData
                 file="config/liquibase/fake-data/comments.csv"
-                tableName="comment">
+                tableName="comment"
+                quotchar="'">
             <column name="id" type="numeric"/>
             <column name="parent_id" type="numeric"/>
             <column name="url" type="string"/>
@@ -41,7 +43,8 @@
     <changeSet id="20220108121416-3-data" author="tiberiuemilian@gmail.com" context="faker">
         <loadData
                 file="config/liquibase/fake-data/tags.csv"
-                tableName="tag">
+                tableName="tag"
+                quotchar="'">
             <column name="id" type="numeric"/>
             <column name="comment_id" type="numeric"/>
             <column name="name" type="string"/>

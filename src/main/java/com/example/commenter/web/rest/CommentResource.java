@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -183,5 +184,50 @@ public class CommentResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    /**
+     * {@code GET  /comments/directlyAssociated} : count directly associated comments.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and directly associated comments nr in body.
+     */
+    @GetMapping("/comments/directlyAssociated")
+    public Integer countDirectlyAssociatedComments(@RequestParam String author) {
+        log.debug("REST request to count directly associated comments");
+        return commentRepository.countDirectlyAssociatedComments(author);
+    }
+
+    /**
+     * {@code GET  /comments/filterByAuthor} : get filtered comments by author and optional by searchFullText also.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and filtered comments in body.
+     */
+    @GetMapping("/comments/filterByAuthor")
+    public Collection<Comment> filterCommentsByAuthor(
+            @RequestParam String author,
+            @RequestParam(required = false) String searchFullText
+    ) {
+        log.debug("REST request to get filtered comments");
+        if (searchFullText == null)
+            return commentRepository.findAllByAuthorName(author);
+        else
+            return commentRepository.findAllByAuthorAnFullText(author, searchFullText);
+    }
+
+    /**
+     * {@code GET  /comments/filterByTag} : get filtered comments by tag and optional by searchFullText also.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and filtered comments in body.
+     */
+    @GetMapping("/comments/filterByTag")
+    public Collection<Comment> filterCommentsByTag(
+            @RequestParam String tag,
+            @RequestParam(required = false) String searchFullText
+    ) {
+        log.debug("REST request to get filtered comments");
+        if (searchFullText == null)
+            return commentRepository.findAllByTagsName(tag);
+        else
+            return commentRepository.findAllByTagAnFullText(tag, searchFullText);
     }
 }
