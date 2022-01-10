@@ -70,4 +70,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
                             "  and MATCH(comment.content) AGAINST(:searchFullText IN NATURAL LANGUAGE MODE)"
     )
     List<Comment> findAllByTagAnFullText(@Param("tag") String tag, @Param("searchFullText") String searchFullText);
+
+    List<Comment> findAllByParentId(Long parentId);
+
 }

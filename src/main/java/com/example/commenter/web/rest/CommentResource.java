@@ -230,4 +230,17 @@ public class CommentResource {
         else
             return commentRepository.findAllByTagAnFullText(tag, searchFullText);
     }
+
+    /**
+     * {@code GET  /comments/:id/children : get all the comment's children.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of comments in body.
+     */
+    @GetMapping("/comments/{id}/children")
+    public List<Comment> getAllChildren(@PathVariable Long id) {
+        log.debug("REST request to get all Comment with specific parent id");
+            return commentRepository.findAllByParentId(id);
+    }
+
+
 }
