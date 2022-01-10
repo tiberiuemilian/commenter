@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "40ba1c77-ddc7-405e-b3d7-cb94687bc292",
+		"name": "commenter requests collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAuthorById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/authors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllAuthors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/authors/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTagById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/tags/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tags",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllTags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/tags/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tags",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllComments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CountDirectlyAssociatedComments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/directlyAssociated?author=Carley67",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"directlyAssociated"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Carley67"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllByAuthor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/filterByAuthor?author=Carley67",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"filterByAuthor"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Carley67"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllByAuthorAnFullText",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/filterByAuthor?author=Carley67&searchFullText=quisquam",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"filterByAuthor"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Carley67"
+						},
+						{
+							"key": "searchFullText",
+							"value": "quisquam"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllByTag",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/filterByTag?tag=Chips",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"filterByTag"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "Chips"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllByTagAnFullText",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/filterByTag?tag=Chips&searchFullText=quisquam",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"filterByTag"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "Chips"
+						},
+						{
+							"key": "searchFullText",
+							"value": "quisquam"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllCommentsByParentId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/139/children",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"139",
+						"children"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindParent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/comments/139",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"139"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
